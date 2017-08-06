@@ -1,0 +1,49 @@
+﻿<h1>Add Sample</h1>
+<!-- Form -->
+<div class="row">
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>Barcode</label>
+            <input class="form-control" type="text" [(ngModel)]="sample.barcode" />
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>Date Created</label>
+            <input class="form-control" type="date" [(ngModel)]="sample.createdAt" />
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>User</label>
+            <select class="form-control" [(ngModel)]="sample.createdBy">
+                <option *ngFor="let user of users" [ngValue]="user.userId">{{ user.firstName }} {{ user.lastName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label>Status</label>
+            <select class="form-control" [(ngModel)]="sample.statusId">
+                <option *ngFor="let status of statuses" [ngValue]="status.statusId">{{ status.status }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label>&nbsp;</label>
+        <button class="btn btn-default" [disabled]="!validForm()" (click)="addSample()" style="display:block">Add</button>
+    </div>
+    
+    <div class="col-md-12">
+        <div class="alert alert-success" *ngIf="success">
+            <strong>Success!</strong> Sample was added.
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="alert alert-danger" *ngIf="fail">
+            <strong>Fail!</strong> Sample failed to upload.
+        </div>
+    </div>
+    <!-- End Form -->
+</div>
+

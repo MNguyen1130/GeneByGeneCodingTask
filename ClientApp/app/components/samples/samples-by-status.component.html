@@ -1,0 +1,27 @@
+﻿<h1>Samples by Status (API)</h1>
+<div *ngIf="statuses">
+    <select [(ngModel)]="selectedStatus">
+        <option *ngFor="let status of statuses" [ngValue]="status.statusId">{{ status.status }}</option>
+    </select>
+    <button (click)="searchSamples();">Search</button>
+</div>
+<table class='table' *ngIf="samples">
+    <thead>
+        <tr>
+            <th>Sample Id</th>
+            <th>Barcode</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sample of samples">
+            <td>{{ sample.sampleId }}</td>
+            <td>{{ sample.barcode }}</td>
+            <td>{{ sample.createdAt }}</td>
+            <td>{{ sample.firstName }} {{ sample.lastName }}</td>
+            <td>{{ sample.status }}</td>
+        </tr>
+    </tbody>
+</table>

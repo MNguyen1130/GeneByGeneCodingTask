@@ -1,0 +1,39 @@
+﻿<h1>Samples Page</h1>
+<br />
+<table class='table' *ngIf="samples">
+    <thead>
+        <tr>
+            <td>
+                <input type="number" [(ngModel)]="filter.sampleId" min="1" step="1" placeholder="Id"/>
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="filter.barcode" placeholder="Bar Code" />
+            </td>
+            <td>
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="filter.firstName" placeholder="First Name" />
+                <input type="text" [(ngModel)]="filter.lastName" placeholder="Last Name" />
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="filter.status" placeholder="Status" />
+            </td>
+        </tr>
+        <tr>
+            <th>Sample Id</th>
+            <th>Barcode</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sample of samples | samplesfilter:filter">
+            <td>{{ sample.sampleId }}</td>
+            <td>{{ sample.barcode }}</td>
+            <td>{{ sample.createdAt | date:short }}</td>
+            <td>{{ sample.firstName }} {{ sample.lastName }}</td>
+            <td>{{ sample.status }}</td>
+        </tr>
+    </tbody>
+</table>

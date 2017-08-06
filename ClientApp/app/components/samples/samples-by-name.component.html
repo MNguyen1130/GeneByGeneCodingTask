@@ -1,0 +1,23 @@
+﻿<h1>Samples by Name (API)</h1>
+<input type="text" [(ngModel)]="searchInput" />
+<button (click)="searchSamples();">Search</button>
+<table class='table' *ngIf="samples">
+    <thead>
+        <tr>
+            <th>Sample Id</th>
+            <th>Barcode</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sample of samples">
+            <td>{{ sample.sampleId }}</td>
+            <td>{{ sample.barcode }}</td>
+            <td>{{ sample.createdAt }}</td>
+            <td>{{ sample.firstName }} {{ sample.lastName }}</td>
+            <td>{{ sample.status }}</td>
+        </tr>
+    </tbody>
+</table>
